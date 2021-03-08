@@ -88,27 +88,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>TB COVID Blantyre: About this site</title>
   
-  <meta property="description" itemprop="description" content="Some additional details about the website"/>
   
   
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="TB COVID Blantyre: About this site"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Some additional details about the website"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="TB COVID Blantyre"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="TB COVID Blantyre: About this site"/>
-  <meta property="twitter:description" content="Some additional details about the website"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["About this site"]},{"type":"character","attributes":{},"value":["Some additional details about the website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["About this site"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2042,8 +2039,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
+  <style type="text/css">
+  /* --------------Navbar-------------------- */
+  
+  .distill-site-header{ 
+    background-color: #3EB489;
+  }
+  </style>
   <!--/radix_placeholder_site_in_header-->
 
+  <link rel="stylesheet" href="styles.css" type="text/css"/>
 
 </head>
 
@@ -2052,7 +2057,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"About this site","description":"Some additional details about the website","authors":[]}
+{"title":"About this site","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2061,6 +2066,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
 <a href="index.html" class="title">TB COVID Blantyre</a>
+<a href="Code.html">Code</a>
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
@@ -2077,11 +2083,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>About this site</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Some additional details about the website</p></p>
+
 </div>
 
 
 <div class="d-article">
+<p>This is a website (and github repository) of data and code for our work about impact of COVID on TB notifications in Blantyre Malawi.</p>
+<p>We are the Malawi Liverpool Wellcome Population Health group; a group of reseachers affiliated with Malawi-Liverpool-Wellcome, Liverpool School of Tropical Medicine, London School of Hygiene and Tropical Medicine, College of Medicine at University of Malawi and University of Sheffield.</p>
+<p>The TB electronic reporting system is a partnership between our group and Malawi National TB programme and Blantyre District Health Office.</p>
+<p>Some more information about our research group is available at Dr Peter MacPherson’s group manual here <a href="https://petermacp.github.io/mlw.public.health.group/" class="uri">https://petermacp.github.io/mlw.public.health.group/</a> .</p>
+<p>More data about TB epidemiology in Blantyre is here <a href="https://github.com/petermacp/BlantyreTBEpi" class="uri">https://github.com/petermacp/BlantyreTBEpi</a> (a companion package to the paper ‘MacPherson, P. et al. Disparities in access to diagnosis and care in Blantyre, Malawi, identified through enhanced tuberculosis surveillance and spatial analysis. BMC Medicine 17, 21 (2019). <a href="https://doi.org/10.1186/s12916-019-1260-6" class="uri">https://doi.org/10.1186/s12916-019-1260-6</a>’ )</p>
+<p>If you have any questions, we’d be happy to discuss. A good first port of call is probably peter.macpherson [at] lstmed [dot] ac [dot] uk or rachaelburke [at] lshtm [dot] ac [dot] uk.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
