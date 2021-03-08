@@ -1,0 +1,21 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-03-08T14:45:29+02:00"
+    },
+    {
+      "path": "index.html",
+      "title": "TB COVID Blantyre",
+      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-03-08T14:45:30+02:00"
+    }
+  ],
+  "collections": []
+}

@@ -1,0 +1,17 @@
+name: "tbcovidblantyre"
+title: "TB COVID Blantyre"
+description: |
+  TB COVID Blantyre
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+  left:
+    - text: "Code"
+      href: Code.html
+output: 
+  distill::distill_article:
+    css: styles.css
