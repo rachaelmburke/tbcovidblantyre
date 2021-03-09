@@ -92,8 +92,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
   
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-03-08"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-03-08"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-03-09"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-03-09"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="TB COVID Blantyre: Code"/>
@@ -111,7 +111,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Code"]},{"type":"character","attributes":{},"value":["Code for our Interrupted Time Series Analysis\n"]},{"type":"character","attributes":{},"value":["2021-03-08"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Code"]},{"type":"character","attributes":{},"value":["Code for our Interrupted Time Series Analysis\n"]},{"type":"character","attributes":{},"value":["2021-03-09"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2063,7 +2063,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Code","description":"Code for our Interrupted Time Series Analysis","authors":[],"publishedDate":"2021-03-08T00:00:00.000+00:00"}
+{"title":"Code","description":"Code for our Interrupted Time Series Analysis","authors":[],"publishedDate":"2021-03-09T00:00:00.000+00:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2194,7 +2194,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>all</span>, by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"month_num"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/pkg/MASS/man/lm.ridge.html'>select</a></span><span class='op'>(</span><span class='va'>month_num</span>,<span class='va'>covid.x</span>, <span class='va'>pop</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>rename</span><span class='op'>(</span>covid<span class='op'>=</span><span class='va'>covid.x</span><span class='op'>)</span><span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/zoo/man/na.approx.html'>na.approx</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  <span class='co'># from zoo package, linear interpolation of population between quarters (to match months now being effectively continuous)</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/zoo/man/na.approx.html'>na.approx</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># from zoo package, linear interpolation of population between quarters (to match months now being effectively continuous)</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/zoo/man/na.locf.html'>na.locf</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
@@ -2448,7 +2449,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#evcmxvkaqs .gt_table {
+#xfwdbcsaps .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2473,7 +2474,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-left-color: #D3D3D3;
 }
 
-#evcmxvkaqs .gt_heading {
+#xfwdbcsaps .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2485,7 +2486,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#evcmxvkaqs .gt_title {
+#xfwdbcsaps .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2495,7 +2496,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-width: 0;
 }
 
-#evcmxvkaqs .gt_subtitle {
+#xfwdbcsaps .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2505,13 +2506,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-width: 0;
 }
 
-#evcmxvkaqs .gt_bottom_border {
+#xfwdbcsaps .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#evcmxvkaqs .gt_col_headings {
+#xfwdbcsaps .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2526,7 +2527,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#evcmxvkaqs .gt_col_heading {
+#xfwdbcsaps .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2546,7 +2547,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#evcmxvkaqs .gt_column_spanner_outer {
+#xfwdbcsaps .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2558,15 +2559,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 4px;
 }
 
-#evcmxvkaqs .gt_column_spanner_outer:first-child {
+#xfwdbcsaps .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#evcmxvkaqs .gt_column_spanner_outer:last-child {
+#xfwdbcsaps .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#evcmxvkaqs .gt_column_spanner {
+#xfwdbcsaps .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2578,7 +2579,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   width: 100%;
 }
 
-#evcmxvkaqs .gt_group_heading {
+#xfwdbcsaps .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2600,7 +2601,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#evcmxvkaqs .gt_empty_group_heading {
+#xfwdbcsaps .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2615,15 +2616,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#evcmxvkaqs .gt_from_md > :first-child {
+#xfwdbcsaps .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#evcmxvkaqs .gt_from_md > :last-child {
+#xfwdbcsaps .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#evcmxvkaqs .gt_row {
+#xfwdbcsaps .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2642,7 +2643,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#evcmxvkaqs .gt_stub {
+#xfwdbcsaps .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2654,7 +2655,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-left: 12px;
 }
 
-#evcmxvkaqs .gt_summary_row {
+#xfwdbcsaps .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2664,7 +2665,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#evcmxvkaqs .gt_first_summary_row {
+#xfwdbcsaps .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2674,7 +2675,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#evcmxvkaqs .gt_grand_summary_row {
+#xfwdbcsaps .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2684,7 +2685,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#evcmxvkaqs .gt_first_grand_summary_row {
+#xfwdbcsaps .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2694,11 +2695,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#evcmxvkaqs .gt_striped {
+#xfwdbcsaps .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#evcmxvkaqs .gt_table_body {
+#xfwdbcsaps .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2707,7 +2708,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-color: #D3D3D3;
 }
 
-#evcmxvkaqs .gt_footnotes {
+#xfwdbcsaps .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2721,13 +2722,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#evcmxvkaqs .gt_footnote {
+#xfwdbcsaps .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#evcmxvkaqs .gt_sourcenotes {
+#xfwdbcsaps .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2741,46 +2742,46 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#evcmxvkaqs .gt_sourcenote {
+#xfwdbcsaps .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#evcmxvkaqs .gt_left {
+#xfwdbcsaps .gt_left {
   text-align: left;
 }
 
-#evcmxvkaqs .gt_center {
+#xfwdbcsaps .gt_center {
   text-align: center;
 }
 
-#evcmxvkaqs .gt_right {
+#xfwdbcsaps .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#evcmxvkaqs .gt_font_normal {
+#xfwdbcsaps .gt_font_normal {
   font-weight: normal;
 }
 
-#evcmxvkaqs .gt_font_bold {
+#xfwdbcsaps .gt_font_bold {
   font-weight: bold;
 }
 
-#evcmxvkaqs .gt_font_italic {
+#xfwdbcsaps .gt_font_italic {
   font-style: italic;
 }
 
-#evcmxvkaqs .gt_super {
+#xfwdbcsaps .gt_super {
   font-size: 65%;
 }
 
-#evcmxvkaqs .gt_footnote_marks {
+#xfwdbcsaps .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="evcmxvkaqs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="xfwdbcsaps" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -2883,7 +2884,7 @@ Make and plot predictions
 
 <span class='co'># Plot observed values and predictions</span>
 <span class='fu'>ggplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-<span class='fu'>geom_rect</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>xmin<span class='op'>=</span><span class='va'>covid_date_m</span>, xmax<span class='op'>=</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='st'>"15 Dec 2020"</span><span class='op'>)</span>, ymin<span class='op'>=</span><span class='op'>-</span><span class='cn'>Inf</span>, ymax<span class='op'>=</span><span class='cn'>Inf</span><span class='op'>)</span>, alpha<span class='op'>=</span><span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
+<span class='fu'>geom_rect</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>xmin<span class='op'>=</span><span class='va'>covid_date_m</span>, xmax<span class='op'>=</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='st'>"31 Dec 2020"</span><span class='op'>)</span>, ymin<span class='op'>=</span><span class='op'>-</span><span class='cn'>Inf</span>, ymax<span class='op'>=</span><span class='cn'>Inf</span><span class='op'>)</span>, alpha<span class='op'>=</span><span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
 <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y<span class='op'>=</span><span class='va'>cnr_pred</span>, x<span class='op'>=</span><span class='va'>seq</span>, linetype<span class='op'>=</span><span class='st'>"observed"</span>, color<span class='op'>=</span><span class='st'>"observed"</span><span class='op'>)</span>, data<span class='op'>=</span><span class='va'>plot_df</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>c_fact</span><span class='op'>==</span><span class='cn'>F</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
 <span class='fu'>geom_ribbon</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymax<span class='op'>=</span><span class='va'>cnr_high</span>, ymin<span class='op'>=</span><span class='va'>cnr_low</span>, x<span class='op'>=</span><span class='va'>seq</span>, fill<span class='op'>=</span><span class='st'>"observed"</span><span class='op'>)</span>, alpha<span class='op'>=</span><span class='fl'>0.3</span>, data<span class='op'>=</span><span class='va'>plot_df</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>c_fact</span><span class='op'>==</span><span class='cn'>F</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
 <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y<span class='op'>=</span><span class='va'>cnr_pred</span>, x<span class='op'>=</span><span class='va'>seq</span>, linetype<span class='op'>=</span><span class='st'>"counterfactual"</span>, color<span class='op'>=</span><span class='st'>"counterfactual"</span><span class='op'>)</span>, data<span class='op'>=</span><span class='va'>plot_df</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>c_fact</span><span class='op'>==</span><span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
@@ -2897,7 +2898,7 @@ Make and plot predictions
     <span class='fu'>xlab</span><span class='op'>(</span><span class='st'>"Month and Year"</span><span class='op'>)</span> <span class='op'>+</span>
    <span class='fu'>labs</span><span class='op'>(</span>title<span class='op'>=</span><span class='st'>"Blantyre TB Case Notifcation Rate"</span>,
        caption<span class='op'>=</span><span class='st'>"CNR = Cases TB notified per 100,000 person-years, \n Dots = observed case notification rate \n Line = fitted model (95% CI) with both step and slope change due to COVID, see methods for details \n Shaded area indicates time that COVID emergency was declared in Malawi"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>coord_cartesian</span><span class='op'>(</span>xlim<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='st'>"01 April 2016"</span><span class='op'>)</span>, <span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='st'>"15 Dec 2020"</span><span class='op'>)</span><span class='op'>)</span>,ylim<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>430</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>coord_cartesian</span><span class='op'>(</span>xlim<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='st'>"01 April 2016"</span><span class='op'>)</span>, <span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='st'>"31 Dec 2020"</span><span class='op'>)</span><span class='op'>)</span>,ylim<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>430</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>scale_x_date</span><span class='op'>(</span>expand <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span>  <span class='op'>%+replace%</span>
     <span class='fu'>theme</span><span class='op'>(</span>legend.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
@@ -2992,7 +2993,7 @@ Make and plot predictions
 <span class='fu'>boot_fx</span><span class='op'>(</span><span class='va'>m1_nb_covidt</span><span class='op'>)</span> <span class='co'># col 1 = observed cases, col 2 = predicted under counterfactual, col 3 = abs difference, col 4 = rel diff (one replicate)</span>
 </code></pre>
 </div>
-<pre><code>[1] 1075.0000000 1440.8850518  365.8850518    0.2539308</code></pre>
+<pre><code>[1] 1075.0000000 1436.9131081  361.9131081    0.2518685</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># now run 1000 times</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/boot/man/boot.html'>boot</a></span><span class='op'>(</span><span class='va'>m1_nb_covidt</span>,<span class='va'>boot_fx</span>,R<span class='op'>=</span><span class='fl'>1000</span>,sim<span class='op'>=</span><span class='st'>"parametric"</span><span class='op'>)</span>
@@ -3058,7 +3059,7 @@ Make and plot predictions
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ersjmwhudv .gt_table {
+#dxdyghvegg .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3083,7 +3084,7 @@ Make and plot predictions
   border-left-color: #D3D3D3;
 }
 
-#ersjmwhudv .gt_heading {
+#dxdyghvegg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3095,7 +3096,7 @@ Make and plot predictions
   border-right-color: #D3D3D3;
 }
 
-#ersjmwhudv .gt_title {
+#dxdyghvegg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3105,7 +3106,7 @@ Make and plot predictions
   border-bottom-width: 0;
 }
 
-#ersjmwhudv .gt_subtitle {
+#dxdyghvegg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3115,13 +3116,13 @@ Make and plot predictions
   border-top-width: 0;
 }
 
-#ersjmwhudv .gt_bottom_border {
+#dxdyghvegg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ersjmwhudv .gt_col_headings {
+#dxdyghvegg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3136,7 +3137,7 @@ Make and plot predictions
   border-right-color: #D3D3D3;
 }
 
-#ersjmwhudv .gt_col_heading {
+#dxdyghvegg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3156,7 +3157,7 @@ Make and plot predictions
   overflow-x: hidden;
 }
 
-#ersjmwhudv .gt_column_spanner_outer {
+#dxdyghvegg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3168,15 +3169,15 @@ Make and plot predictions
   padding-right: 4px;
 }
 
-#ersjmwhudv .gt_column_spanner_outer:first-child {
+#dxdyghvegg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ersjmwhudv .gt_column_spanner_outer:last-child {
+#dxdyghvegg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ersjmwhudv .gt_column_spanner {
+#dxdyghvegg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3188,7 +3189,7 @@ Make and plot predictions
   width: 100%;
 }
 
-#ersjmwhudv .gt_group_heading {
+#dxdyghvegg .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3210,7 +3211,7 @@ Make and plot predictions
   vertical-align: middle;
 }
 
-#ersjmwhudv .gt_empty_group_heading {
+#dxdyghvegg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3225,15 +3226,15 @@ Make and plot predictions
   vertical-align: middle;
 }
 
-#ersjmwhudv .gt_from_md > :first-child {
+#dxdyghvegg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ersjmwhudv .gt_from_md > :last-child {
+#dxdyghvegg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ersjmwhudv .gt_row {
+#dxdyghvegg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3252,7 +3253,7 @@ Make and plot predictions
   overflow-x: hidden;
 }
 
-#ersjmwhudv .gt_stub {
+#dxdyghvegg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3264,7 +3265,7 @@ Make and plot predictions
   padding-left: 12px;
 }
 
-#ersjmwhudv .gt_summary_row {
+#dxdyghvegg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3274,7 +3275,7 @@ Make and plot predictions
   padding-right: 5px;
 }
 
-#ersjmwhudv .gt_first_summary_row {
+#dxdyghvegg .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3284,7 +3285,7 @@ Make and plot predictions
   border-top-color: #D3D3D3;
 }
 
-#ersjmwhudv .gt_grand_summary_row {
+#dxdyghvegg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3294,7 +3295,7 @@ Make and plot predictions
   padding-right: 5px;
 }
 
-#ersjmwhudv .gt_first_grand_summary_row {
+#dxdyghvegg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3304,11 +3305,11 @@ Make and plot predictions
   border-top-color: #D3D3D3;
 }
 
-#ersjmwhudv .gt_striped {
+#dxdyghvegg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ersjmwhudv .gt_table_body {
+#dxdyghvegg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3317,7 +3318,7 @@ Make and plot predictions
   border-bottom-color: #D3D3D3;
 }
 
-#ersjmwhudv .gt_footnotes {
+#dxdyghvegg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3331,13 +3332,13 @@ Make and plot predictions
   border-right-color: #D3D3D3;
 }
 
-#ersjmwhudv .gt_footnote {
+#dxdyghvegg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#ersjmwhudv .gt_sourcenotes {
+#dxdyghvegg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3351,46 +3352,46 @@ Make and plot predictions
   border-right-color: #D3D3D3;
 }
 
-#ersjmwhudv .gt_sourcenote {
+#dxdyghvegg .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#ersjmwhudv .gt_left {
+#dxdyghvegg .gt_left {
   text-align: left;
 }
 
-#ersjmwhudv .gt_center {
+#dxdyghvegg .gt_center {
   text-align: center;
 }
 
-#ersjmwhudv .gt_right {
+#dxdyghvegg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ersjmwhudv .gt_font_normal {
+#dxdyghvegg .gt_font_normal {
   font-weight: normal;
 }
 
-#ersjmwhudv .gt_font_bold {
+#dxdyghvegg .gt_font_bold {
   font-weight: bold;
 }
 
-#ersjmwhudv .gt_font_italic {
+#dxdyghvegg .gt_font_italic {
   font-style: italic;
 }
 
-#ersjmwhudv .gt_super {
+#dxdyghvegg .gt_super {
   font-size: 65%;
 }
 
-#ersjmwhudv .gt_footnote_marks {
+#dxdyghvegg .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="ersjmwhudv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="dxdyghvegg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -3403,9 +3404,9 @@ Make and plot predictions
   <tbody class="gt_table_body">
     <tr>
       <td class="gt_row gt_left">1075</td>
-      <td class="gt_row gt_left">1408 (1366 to 1450)</td>
-      <td class="gt_row gt_left">333 (291 to 375)</td>
-      <td class="gt_row gt_left">0.237 (0.214 to 0.259)</td>
+      <td class="gt_row gt_left">1408 (1367 to 1449)</td>
+      <td class="gt_row gt_left">333 (292 to 374)</td>
+      <td class="gt_row gt_left">0.237 (0.215 to 0.259)</td>
     </tr>
   </tbody>
   
@@ -3461,7 +3462,7 @@ Make and plot predictions
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#teluxcgzth .gt_table {
+#qyuadfujnx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3486,7 +3487,7 @@ Make and plot predictions
   border-left-color: #D3D3D3;
 }
 
-#teluxcgzth .gt_heading {
+#qyuadfujnx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3498,7 +3499,7 @@ Make and plot predictions
   border-right-color: #D3D3D3;
 }
 
-#teluxcgzth .gt_title {
+#qyuadfujnx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3508,7 +3509,7 @@ Make and plot predictions
   border-bottom-width: 0;
 }
 
-#teluxcgzth .gt_subtitle {
+#qyuadfujnx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3518,13 +3519,13 @@ Make and plot predictions
   border-top-width: 0;
 }
 
-#teluxcgzth .gt_bottom_border {
+#qyuadfujnx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#teluxcgzth .gt_col_headings {
+#qyuadfujnx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3539,7 +3540,7 @@ Make and plot predictions
   border-right-color: #D3D3D3;
 }
 
-#teluxcgzth .gt_col_heading {
+#qyuadfujnx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3559,7 +3560,7 @@ Make and plot predictions
   overflow-x: hidden;
 }
 
-#teluxcgzth .gt_column_spanner_outer {
+#qyuadfujnx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3571,15 +3572,15 @@ Make and plot predictions
   padding-right: 4px;
 }
 
-#teluxcgzth .gt_column_spanner_outer:first-child {
+#qyuadfujnx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#teluxcgzth .gt_column_spanner_outer:last-child {
+#qyuadfujnx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#teluxcgzth .gt_column_spanner {
+#qyuadfujnx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3591,7 +3592,7 @@ Make and plot predictions
   width: 100%;
 }
 
-#teluxcgzth .gt_group_heading {
+#qyuadfujnx .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3613,7 +3614,7 @@ Make and plot predictions
   vertical-align: middle;
 }
 
-#teluxcgzth .gt_empty_group_heading {
+#qyuadfujnx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3628,15 +3629,15 @@ Make and plot predictions
   vertical-align: middle;
 }
 
-#teluxcgzth .gt_from_md > :first-child {
+#qyuadfujnx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#teluxcgzth .gt_from_md > :last-child {
+#qyuadfujnx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#teluxcgzth .gt_row {
+#qyuadfujnx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3655,7 +3656,7 @@ Make and plot predictions
   overflow-x: hidden;
 }
 
-#teluxcgzth .gt_stub {
+#qyuadfujnx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3667,7 +3668,7 @@ Make and plot predictions
   padding-left: 12px;
 }
 
-#teluxcgzth .gt_summary_row {
+#qyuadfujnx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3677,7 +3678,7 @@ Make and plot predictions
   padding-right: 5px;
 }
 
-#teluxcgzth .gt_first_summary_row {
+#qyuadfujnx .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3687,7 +3688,7 @@ Make and plot predictions
   border-top-color: #D3D3D3;
 }
 
-#teluxcgzth .gt_grand_summary_row {
+#qyuadfujnx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3697,7 +3698,7 @@ Make and plot predictions
   padding-right: 5px;
 }
 
-#teluxcgzth .gt_first_grand_summary_row {
+#qyuadfujnx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3707,11 +3708,11 @@ Make and plot predictions
   border-top-color: #D3D3D3;
 }
 
-#teluxcgzth .gt_striped {
+#qyuadfujnx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#teluxcgzth .gt_table_body {
+#qyuadfujnx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3720,7 +3721,7 @@ Make and plot predictions
   border-bottom-color: #D3D3D3;
 }
 
-#teluxcgzth .gt_footnotes {
+#qyuadfujnx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3734,13 +3735,13 @@ Make and plot predictions
   border-right-color: #D3D3D3;
 }
 
-#teluxcgzth .gt_footnote {
+#qyuadfujnx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#teluxcgzth .gt_sourcenotes {
+#qyuadfujnx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3754,46 +3755,46 @@ Make and plot predictions
   border-right-color: #D3D3D3;
 }
 
-#teluxcgzth .gt_sourcenote {
+#qyuadfujnx .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#teluxcgzth .gt_left {
+#qyuadfujnx .gt_left {
   text-align: left;
 }
 
-#teluxcgzth .gt_center {
+#qyuadfujnx .gt_center {
   text-align: center;
 }
 
-#teluxcgzth .gt_right {
+#qyuadfujnx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#teluxcgzth .gt_font_normal {
+#qyuadfujnx .gt_font_normal {
   font-weight: normal;
 }
 
-#teluxcgzth .gt_font_bold {
+#qyuadfujnx .gt_font_bold {
   font-weight: bold;
 }
 
-#teluxcgzth .gt_font_italic {
+#qyuadfujnx .gt_font_italic {
   font-style: italic;
 }
 
-#teluxcgzth .gt_super {
+#qyuadfujnx .gt_super {
   font-size: 65%;
 }
 
-#teluxcgzth .gt_footnote_marks {
+#qyuadfujnx .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="teluxcgzth" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="qyuadfujnx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -3809,66 +3810,66 @@ Make and plot predictions
   <tbody class="gt_table_body">
     <tr>
       <td class="gt_row gt_left">(Intercept)</td>
-      <td class="gt_row gt_right">12.1155344</td>
-      <td class="gt_row gt_right">0.192511830</td>
-      <td class="gt_row gt_right">12.95758530</td>
-      <td class="gt_row gt_right">2.128426e-38</td>
-      <td class="gt_row gt_right">8.2831697</td>
-      <td class="gt_row gt_right">17.7009263</td>
+      <td class="gt_row gt_right">12.1403992</td>
+      <td class="gt_row gt_right">0.193562493</td>
+      <td class="gt_row gt_right">12.8978431</td>
+      <td class="gt_row gt_right">4.628719e-38</td>
+      <td class="gt_row gt_right">8.2823493</td>
+      <td class="gt_row gt_right">17.7750608</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale</td>
-      <td class="gt_row gt_right">1.4360663</td>
-      <td class="gt_row gt_right">0.100816299</td>
-      <td class="gt_row gt_right">3.58977332</td>
-      <td class="gt_row gt_right">3.309656e-04</td>
-      <td class="gt_row gt_right">1.1765152</td>
-      <td class="gt_row gt_right">1.7532768</td>
+      <td class="gt_row gt_right">1.4427315</td>
+      <td class="gt_row gt_right">0.101455622</td>
+      <td class="gt_row gt_right">3.6127936</td>
+      <td class="gt_row gt_right">3.029158e-04</td>
+      <td class="gt_row gt_right">1.1803007</td>
+      <td class="gt_row gt_right">1.7639166</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">hivpositive</td>
-      <td class="gt_row gt_right">2.3988067</td>
-      <td class="gt_row gt_right">0.109344609</td>
-      <td class="gt_row gt_right">8.00196197</td>
-      <td class="gt_row gt_right">1.224522e-15</td>
-      <td class="gt_row gt_right">1.9366551</td>
-      <td class="gt_row gt_right">2.9738701</td>
+      <td class="gt_row gt_right">2.3804911</td>
+      <td class="gt_row gt_right">0.109814908</td>
+      <td class="gt_row gt_right">7.8978969</td>
+      <td class="gt_row gt_right">2.836487e-15</td>
+      <td class="gt_row gt_right">1.9202845</td>
+      <td class="gt_row gt_right">2.9535481</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">facqech</td>
-      <td class="gt_row gt_right">1.4189603</td>
-      <td class="gt_row gt_right">0.100830691</td>
-      <td class="gt_row gt_right">3.47041609</td>
-      <td class="gt_row gt_right">5.196527e-04</td>
-      <td class="gt_row gt_right">1.1626818</td>
-      <td class="gt_row gt_right">1.7321214</td>
+      <td class="gt_row gt_right">1.4145021</td>
+      <td class="gt_row gt_right">0.101398175</td>
+      <td class="gt_row gt_right">3.4199590</td>
+      <td class="gt_row gt_right">6.263058e-04</td>
+      <td class="gt_row gt_right">1.1576557</td>
+      <td class="gt_row gt_right">1.7287204</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivnegative:fachc</td>
-      <td class="gt_row gt_right">0.9843110</td>
-      <td class="gt_row gt_right">0.217402213</td>
-      <td class="gt_row gt_right">-0.07273781</td>
-      <td class="gt_row gt_right">9.420148e-01</td>
-      <td class="gt_row gt_right">0.6411356</td>
-      <td class="gt_row gt_right">1.5114006</td>
+      <td class="gt_row gt_right">0.9763552</td>
+      <td class="gt_row gt_right">0.218483297</td>
+      <td class="gt_row gt_right">-0.1095222</td>
+      <td class="gt_row gt_right">9.127883e-01</td>
+      <td class="gt_row gt_right">0.6346182</td>
+      <td class="gt_row gt_right">1.5023798</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivnegative:fachc</td>
-      <td class="gt_row gt_right">1.4578674</td>
-      <td class="gt_row gt_right">0.153718881</td>
-      <td class="gt_row gt_right">2.45236429</td>
-      <td class="gt_row gt_right">1.419209e-02</td>
-      <td class="gt_row gt_right">1.0790407</td>
-      <td class="gt_row gt_right">1.9701096</td>
+      <td class="gt_row gt_right">1.4557433</td>
+      <td class="gt_row gt_right">0.154401593</td>
+      <td class="gt_row gt_right">2.4320775</td>
+      <td class="gt_row gt_right">1.501249e-02</td>
+      <td class="gt_row gt_right">1.0760573</td>
+      <td class="gt_row gt_right">1.9698072</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivpositive:fachc</td>
-      <td class="gt_row gt_right">0.8804094</td>
-      <td class="gt_row gt_right">0.150195340</td>
-      <td class="gt_row gt_right">-0.84801711</td>
-      <td class="gt_row gt_right">3.964284e-01</td>
-      <td class="gt_row gt_right">0.6541742</td>
-      <td class="gt_row gt_right">1.1846268</td>
+      <td class="gt_row gt_right">0.8835733</td>
+      <td class="gt_row gt_right">0.151010167</td>
+      <td class="gt_row gt_right">-0.8196869</td>
+      <td class="gt_row gt_right">4.123946e-01</td>
+      <td class="gt_row gt_right">0.6553912</td>
+      <td class="gt_row gt_right">1.1909455</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivpositive:fachc</td>
@@ -3881,12 +3882,12 @@ Make and plot predictions
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivnegative:facqech</td>
-      <td class="gt_row gt_right">0.9510934</td>
-      <td class="gt_row gt_right">0.163613736</td>
-      <td class="gt_row gt_right">-0.30647191</td>
-      <td class="gt_row gt_right">7.592454e-01</td>
-      <td class="gt_row gt_right">0.6891761</td>
-      <td class="gt_row gt_right">1.3118020</td>
+      <td class="gt_row gt_right">0.9829549</td>
+      <td class="gt_row gt_right">0.163995988</td>
+      <td class="gt_row gt_right">-0.1048319</td>
+      <td class="gt_row gt_right">9.165092e-01</td>
+      <td class="gt_row gt_right">0.7118150</td>
+      <td class="gt_row gt_right">1.3566749</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivnegative:facqech</td>
@@ -3917,219 +3918,219 @@ Make and plot predictions
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivnegative:fachc:covid</td>
-      <td class="gt_row gt_right">0.4907501</td>
-      <td class="gt_row gt_right">0.283679289</td>
-      <td class="gt_row gt_right">-2.50924282</td>
-      <td class="gt_row gt_right">1.209903e-02</td>
-      <td class="gt_row gt_right">0.2751684</td>
-      <td class="gt_row gt_right">0.8439561</td>
+      <td class="gt_row gt_right">0.5458092</td>
+      <td class="gt_row gt_right">0.273641111</td>
+      <td class="gt_row gt_right">-2.2127002</td>
+      <td class="gt_row gt_right">2.691832e-02</td>
+      <td class="gt_row gt_right">0.3126395</td>
+      <td class="gt_row gt_right">0.9237274</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivnegative:fachc:covid</td>
-      <td class="gt_row gt_right">0.6576509</td>
-      <td class="gt_row gt_right">0.190469188</td>
-      <td class="gt_row gt_right">-2.20025669</td>
-      <td class="gt_row gt_right">2.778869e-02</td>
-      <td class="gt_row gt_right">0.4508589</td>
-      <td class="gt_row gt_right">0.9550712</td>
+      <td class="gt_row gt_right">0.6376588</td>
+      <td class="gt_row gt_right">0.192928618</td>
+      <td class="gt_row gt_right">-2.3322195</td>
+      <td class="gt_row gt_right">1.968915e-02</td>
+      <td class="gt_row gt_right">0.4351711</td>
+      <td class="gt_row gt_right">0.9299147</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivpositive:fachc:covid</td>
-      <td class="gt_row gt_right">0.6005564</td>
-      <td class="gt_row gt_right">0.247447802</td>
-      <td class="gt_row gt_right">-2.06063124</td>
-      <td class="gt_row gt_right">3.933823e-02</td>
-      <td class="gt_row gt_right">0.3659288</td>
-      <td class="gt_row gt_right">0.9637792</td>
+      <td class="gt_row gt_right">0.5761861</td>
+      <td class="gt_row gt_right">0.250705398</td>
+      <td class="gt_row gt_right">-2.1990933</td>
+      <td class="gt_row gt_right">2.787129e-02</td>
+      <td class="gt_row gt_right">0.3488412</td>
+      <td class="gt_row gt_right">0.9296577</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivpositive:fachc:covid</td>
-      <td class="gt_row gt_right">0.6580781</td>
-      <td class="gt_row gt_right">0.202326144</td>
-      <td class="gt_row gt_right">-2.06810482</td>
-      <td class="gt_row gt_right">3.863017e-02</td>
-      <td class="gt_row gt_right">0.4394841</td>
-      <td class="gt_row gt_right">0.9775502</td>
+      <td class="gt_row gt_right">0.6704171</td>
+      <td class="gt_row gt_right">0.202049675</td>
+      <td class="gt_row gt_right">-1.9789943</td>
+      <td class="gt_row gt_right">4.781665e-02</td>
+      <td class="gt_row gt_right">0.4478913</td>
+      <td class="gt_row gt_right">0.9960389</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivnegative:facqech:covid</td>
-      <td class="gt_row gt_right">0.5196867</td>
-      <td class="gt_row gt_right">0.311525900</td>
-      <td class="gt_row gt_right">-2.10104278</td>
-      <td class="gt_row gt_right">3.563721e-02</td>
-      <td class="gt_row gt_right">0.2739374</td>
-      <td class="gt_row gt_right">0.9390874</td>
+      <td class="gt_row gt_right">0.5784814</td>
+      <td class="gt_row gt_right">0.304373175</td>
+      <td class="gt_row gt_right">-1.7982823</td>
+      <td class="gt_row gt_right">7.213228e-02</td>
+      <td class="gt_row gt_right">0.3097904</td>
+      <td class="gt_row gt_right">1.0334361</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivnegative:facqech:covid</td>
-      <td class="gt_row gt_right">0.6605462</td>
-      <td class="gt_row gt_right">0.240561331</td>
-      <td class="gt_row gt_right">-1.72383573</td>
-      <td class="gt_row gt_right">8.473750e-02</td>
-      <td class="gt_row gt_right">0.4073813</td>
-      <td class="gt_row gt_right">1.0502721</td>
+      <td class="gt_row gt_right">0.6362867</td>
+      <td class="gt_row gt_right">0.243444834</td>
+      <td class="gt_row gt_right">-1.8571192</td>
+      <td class="gt_row gt_right">6.329419e-02</td>
+      <td class="gt_row gt_right">0.3901032</td>
+      <td class="gt_row gt_right">1.0168502</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivpositive:facqech:covid</td>
-      <td class="gt_row gt_right">0.6546209</td>
-      <td class="gt_row gt_right">0.197709288</td>
-      <td class="gt_row gt_right">-2.14304054</td>
-      <td class="gt_row gt_right">3.210984e-02</td>
-      <td class="gt_row gt_right">0.4411717</td>
-      <td class="gt_row gt_right">0.9646473</td>
+      <td class="gt_row gt_right">0.6764718</td>
+      <td class="gt_row gt_right">0.197251707</td>
+      <td class="gt_row gt_right">-1.9815523</td>
+      <td class="gt_row gt_right">4.752938e-02</td>
+      <td class="gt_row gt_right">0.4560302</td>
+      <td class="gt_row gt_right">0.9971969</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivpositive:facqech:covid</td>
-      <td class="gt_row gt_right">0.7080128</td>
-      <td class="gt_row gt_right">0.185582512</td>
-      <td class="gt_row gt_right">-1.86059048</td>
-      <td class="gt_row gt_right">6.280203e-02</td>
-      <td class="gt_row gt_right">0.4906608</td>
-      <td class="gt_row gt_right">1.0175524</td>
+      <td class="gt_row gt_right">0.6838755</td>
+      <td class="gt_row gt_right">0.187289858</td>
+      <td class="gt_row gt_right">-2.0288303</td>
+      <td class="gt_row gt_right">4.247558e-02</td>
+      <td class="gt_row gt_right">0.4726530</td>
+      <td class="gt_row gt_right">0.9853610</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivnegative:fachc:month_num</td>
-      <td class="gt_row gt_right">1.0029974</td>
-      <td class="gt_row gt_right">0.003698200</td>
-      <td class="gt_row gt_right">0.80928939</td>
-      <td class="gt_row gt_right">4.183487e-01</td>
-      <td class="gt_row gt_right">0.9956957</td>
-      <td class="gt_row gt_right">1.0103613</td>
+      <td class="gt_row gt_right">1.0033917</td>
+      <td class="gt_row gt_right">0.003704681</td>
+      <td class="gt_row gt_right">0.9139585</td>
+      <td class="gt_row gt_right">3.607387e-01</td>
+      <td class="gt_row gt_right">0.9960828</td>
+      <td class="gt_row gt_right">1.0107640</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivnegative:fachc:month_num</td>
-      <td class="gt_row gt_right">1.0048162</td>
-      <td class="gt_row gt_right">0.002895395</td>
-      <td class="gt_row gt_right">1.65940921</td>
-      <td class="gt_row gt_right">9.703336e-02</td>
-      <td class="gt_row gt_right">0.9992205</td>
-      <td class="gt_row gt_right">1.0104515</td>
+      <td class="gt_row gt_right">1.0045060</td>
+      <td class="gt_row gt_right">0.002910011</td>
+      <td class="gt_row gt_right">1.5449824</td>
+      <td class="gt_row gt_right">1.223505e-01</td>
+      <td class="gt_row gt_right">0.9988816</td>
+      <td class="gt_row gt_right">1.0101698</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivpositive:fachc:month_num</td>
-      <td class="gt_row gt_right">0.9881798</td>
-      <td class="gt_row gt_right">0.003235850</td>
-      <td class="gt_row gt_right">-3.67463800</td>
-      <td class="gt_row gt_right">2.381869e-04</td>
-      <td class="gt_row gt_right">0.9818555</td>
-      <td class="gt_row gt_right">0.9945155</td>
+      <td class="gt_row gt_right">0.9882730</td>
+      <td class="gt_row gt_right">0.003247471</td>
+      <td class="gt_row gt_right">-3.6324516</td>
+      <td class="gt_row gt_right">2.807412e-04</td>
+      <td class="gt_row gt_right">0.9819263</td>
+      <td class="gt_row gt_right">0.9946314</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivpositive:fachc:month_num</td>
-      <td class="gt_row gt_right">0.9894523</td>
-      <td class="gt_row gt_right">0.002803794</td>
-      <td class="gt_row gt_right">-3.78191112</td>
-      <td class="gt_row gt_right">1.556289e-04</td>
-      <td class="gt_row gt_right">0.9839688</td>
-      <td class="gt_row gt_right">0.9949500</td>
+      <td class="gt_row gt_right">0.9895278</td>
+      <td class="gt_row gt_right">0.002816898</td>
+      <td class="gt_row gt_right">-3.7372232</td>
+      <td class="gt_row gt_right">1.860638e-04</td>
+      <td class="gt_row gt_right">0.9840158</td>
+      <td class="gt_row gt_right">0.9950544</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivnegative:facqech:month_num</td>
-      <td class="gt_row gt_right">0.9864717</td>
-      <td class="gt_row gt_right">0.003811860</td>
-      <td class="gt_row gt_right">-3.57322591</td>
-      <td class="gt_row gt_right">3.526103e-04</td>
-      <td class="gt_row gt_right">0.9790695</td>
-      <td class="gt_row gt_right">0.9938819</td>
+      <td class="gt_row gt_right">0.9852292</td>
+      <td class="gt_row gt_right">0.003821823</td>
+      <td class="gt_row gt_right">-3.8936774</td>
+      <td class="gt_row gt_right">9.873595e-05</td>
+      <td class="gt_row gt_right">0.9778238</td>
+      <td class="gt_row gt_right">0.9926386</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivnegative:facqech:month_num</td>
-      <td class="gt_row gt_right">0.9875537</td>
-      <td class="gt_row gt_right">0.003288023</td>
-      <td class="gt_row gt_right">-3.80909958</td>
-      <td class="gt_row gt_right">1.394738e-04</td>
-      <td class="gt_row gt_right">0.9812335</td>
-      <td class="gt_row gt_right">0.9938836</td>
+      <td class="gt_row gt_right">0.9874961</td>
+      <td class="gt_row gt_right">0.003297709</td>
+      <td class="gt_row gt_right">-3.8155925</td>
+      <td class="gt_row gt_right">1.358566e-04</td>
+      <td class="gt_row gt_right">0.9811656</td>
+      <td class="gt_row gt_right">0.9938364</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivpositive:facqech:month_num</td>
-      <td class="gt_row gt_right">0.9904783</td>
-      <td class="gt_row gt_right">0.002794147</td>
-      <td class="gt_row gt_right">-3.42404772</td>
-      <td class="gt_row gt_right">6.169579e-04</td>
-      <td class="gt_row gt_right">0.9849967</td>
-      <td class="gt_row gt_right">0.9959753</td>
+      <td class="gt_row gt_right">0.9906978</td>
+      <td class="gt_row gt_right">0.002810066</td>
+      <td class="gt_row gt_right">-3.3257988</td>
+      <td class="gt_row gt_right">8.816554e-04</td>
+      <td class="gt_row gt_right">0.9851754</td>
+      <td class="gt_row gt_right">0.9962363</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivpositive:facqech:month_num</td>
-      <td class="gt_row gt_right">0.9850331</td>
-      <td class="gt_row gt_right">0.002658256</td>
-      <td class="gt_row gt_right">-5.67289550</td>
-      <td class="gt_row gt_right">1.404039e-08</td>
-      <td class="gt_row gt_right">0.9798461</td>
-      <td class="gt_row gt_right">0.9902278</td>
+      <td class="gt_row gt_right">0.9852521</td>
+      <td class="gt_row gt_right">0.002671803</td>
+      <td class="gt_row gt_right">-5.5609378</td>
+      <td class="gt_row gt_right">2.683288e-08</td>
+      <td class="gt_row gt_right">0.9800362</td>
+      <td class="gt_row gt_right">0.9904763</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivnegative:fachc:covid:I(month_num - covid_month_num)</td>
-      <td class="gt_row gt_right">0.9725294</td>
-      <td class="gt_row gt_right">0.057393016</td>
-      <td class="gt_row gt_right">-0.48533733</td>
-      <td class="gt_row gt_right">6.274371e-01</td>
-      <td class="gt_row gt_right">0.8677633</td>
-      <td class="gt_row gt_right">1.0890556</td>
+      <td class="gt_row gt_right">0.9640896</td>
+      <td class="gt_row gt_right">0.055520665</td>
+      <td class="gt_row gt_right">-0.6586925</td>
+      <td class="gt_row gt_right">5.100933e-01</td>
+      <td class="gt_row gt_right">0.8630069</td>
+      <td class="gt_row gt_right">1.0759028</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivnegative:fachc:covid:I(month_num - covid_month_num)</td>
-      <td class="gt_row gt_right">0.9976163</td>
-      <td class="gt_row gt_right">0.036641558</td>
-      <td class="gt_row gt_right">-0.06513245</td>
-      <td class="gt_row gt_right">9.480685e-01</td>
-      <td class="gt_row gt_right">0.9277295</td>
-      <td class="gt_row gt_right">1.0728068</td>
+      <td class="gt_row gt_right">1.0012730</td>
+      <td class="gt_row gt_right">0.037075187</td>
+      <td class="gt_row gt_right">0.0343136</td>
+      <td class="gt_row gt_right">9.726271e-01</td>
+      <td class="gt_row gt_right">0.9305042</td>
+      <td class="gt_row gt_right">1.0775086</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivpositive:fachc:covid:I(month_num - covid_month_num)</td>
-      <td class="gt_row gt_right">1.0470545</td>
-      <td class="gt_row gt_right">0.047052742</td>
-      <td class="gt_row gt_right">0.97722127</td>
-      <td class="gt_row gt_right">3.284596e-01</td>
-      <td class="gt_row gt_right">0.9557008</td>
-      <td class="gt_row gt_right">1.1480292</td>
+      <td class="gt_row gt_right">1.0511029</td>
+      <td class="gt_row gt_right">0.047585309</td>
+      <td class="gt_row gt_right">1.0473819</td>
+      <td class="gt_row gt_right">2.949235e-01</td>
+      <td class="gt_row gt_right">0.9586165</td>
+      <td class="gt_row gt_right">1.1535366</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivpositive:fachc:covid:I(month_num - covid_month_num)</td>
-      <td class="gt_row gt_right">1.0137129</td>
-      <td class="gt_row gt_right">0.039236137</td>
-      <td class="gt_row gt_right">0.34712274</td>
-      <td class="gt_row gt_right">7.284991e-01</td>
-      <td class="gt_row gt_right">0.9379306</td>
-      <td class="gt_row gt_right">1.0956976</td>
+      <td class="gt_row gt_right">1.0115898</td>
+      <td class="gt_row gt_right">0.039205760</td>
+      <td class="gt_row gt_right">0.2939141</td>
+      <td class="gt_row gt_right">7.688236e-01</td>
+      <td class="gt_row gt_right">0.9358823</td>
+      <td class="gt_row gt_right">1.0934660</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivnegative:facqech:covid:I(month_num - covid_month_num)</td>
-      <td class="gt_row gt_right">1.1036662</td>
-      <td class="gt_row gt_right">0.056906957</td>
-      <td class="gt_row gt_right">1.73331335</td>
-      <td class="gt_row gt_right">8.303999e-02</td>
-      <td class="gt_row gt_right">0.9871726</td>
-      <td class="gt_row gt_right">1.2373877</td>
+      <td class="gt_row gt_right">1.0979419</td>
+      <td class="gt_row gt_right">0.055719744</td>
+      <td class="gt_row gt_right">1.6769184</td>
+      <td class="gt_row gt_right">9.355844e-02</td>
+      <td class="gt_row gt_right">0.9839899</td>
+      <td class="gt_row gt_right">1.2281314</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivnegative:facqech:covid:I(month_num - covid_month_num)</td>
-      <td class="gt_row gt_right">1.0892441</td>
-      <td class="gt_row gt_right">0.044124108</td>
-      <td class="gt_row gt_right">1.93735262</td>
-      <td class="gt_row gt_right">5.270225e-02</td>
-      <td class="gt_row gt_right">0.9990039</td>
-      <td class="gt_row gt_right">1.1892004</td>
+      <td class="gt_row gt_right">1.0937831</td>
+      <td class="gt_row gt_right">0.044583945</td>
+      <td class="gt_row gt_right">2.0106441</td>
+      <td class="gt_row gt_right">4.436306e-02</td>
+      <td class="gt_row gt_right">1.0023625</td>
+      <td class="gt_row gt_right">1.1952486</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexfemale:hivpositive:facqech:covid:I(month_num - covid_month_num)</td>
-      <td class="gt_row gt_right">1.0442275</td>
-      <td class="gt_row gt_right">0.037430086</td>
-      <td class="gt_row gt_right">1.15621800</td>
-      <td class="gt_row gt_right">2.475920e-01</td>
-      <td class="gt_row gt_right">0.9696114</td>
-      <td class="gt_row gt_right">1.1250529</td>
+      <td class="gt_row gt_right">1.0368397</td>
+      <td class="gt_row gt_right">0.037478779</td>
+      <td class="gt_row gt_right">0.9652756</td>
+      <td class="gt_row gt_right">3.344068e-01</td>
+      <td class="gt_row gt_right">0.9623486</td>
+      <td class="gt_row gt_right">1.1174640</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">sexmale:hivpositive:facqech:covid:I(month_num - covid_month_num)</td>
-      <td class="gt_row gt_right">1.0789975</td>
-      <td class="gt_row gt_right">0.034524445</td>
-      <td class="gt_row gt_right">2.20227596</td>
-      <td class="gt_row gt_right">2.764582e-02</td>
-      <td class="gt_row gt_right">1.0085927</td>
-      <td class="gt_row gt_right">1.1549883</td>
+      <td class="gt_row gt_right">1.0836234</td>
+      <td class="gt_row gt_right">0.034788754</td>
+      <td class="gt_row gt_right">2.3085166</td>
+      <td class="gt_row gt_right">2.097042e-02</td>
+      <td class="gt_row gt_right">1.0126745</td>
+      <td class="gt_row gt_right">1.1602699</td>
     </tr>
   </tbody>
   
@@ -4236,7 +4237,7 @@ Check model
 </code></pre>
 </div>
 <pre><code>         n
-1 352.1101</code></pre>
+1 351.9159</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Boot-strappable function</span>
 <span class='va'>m2_by_covidt</span> <span class='op'>&lt;-</span> <span class='va'>m2_by</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>month</span><span class='op'>&gt;=</span><span class='va'>covid_date_m</span><span class='op'>)</span>
@@ -4273,22 +4274,22 @@ Check model
 </code></pre>
 </div>
 <pre><code>     sex covid_yes covid_no abs_diff  rel_diff
-1 female       382 552.0952 170.0952 0.3080903
-2   male       693 875.0676 182.0676 0.2080612</code></pre>
+1 female       389 552.4449 163.4449 0.2958574
+2   male       686 874.4962 188.4962 0.2155484</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>boot_fx_by</span><span class='op'>(</span><span class='va'>m2_by_covidt</span>,<span class='va'>hiv</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>       hiv covid_yes covid_no abs_diff  rel_diff
-1 negative       414 607.6089 193.6089 0.3186406
-2 positive       661 819.5540 158.5540 0.1934637</code></pre>
+1 negative       415 604.0436 189.0436 0.3129635
+2 positive       660 822.8976 162.8976 0.1979561</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>boot_fx_by</span><span class='op'>(</span><span class='va'>m2_by_covidt</span>,<span class='va'>fac</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>   fac covid_yes covid_no  abs_diff  rel_diff
-1   hc       488 761.1647 273.16474 0.3588773
-2 qech       587 665.9981  78.99807 0.1186161</code></pre>
+1   hc       488 760.8550 272.85500 0.3586163
+2 qech       587 666.0862  79.08618 0.1187327</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -4385,7 +4386,7 @@ Check model
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#hilehjpvzh .gt_table {
+#nzwrrypuyb .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -4410,7 +4411,7 @@ Check model
   border-left-color: #D3D3D3;
 }
 
-#hilehjpvzh .gt_heading {
+#nzwrrypuyb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4422,7 +4423,7 @@ Check model
   border-right-color: #D3D3D3;
 }
 
-#hilehjpvzh .gt_title {
+#nzwrrypuyb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4432,7 +4433,7 @@ Check model
   border-bottom-width: 0;
 }
 
-#hilehjpvzh .gt_subtitle {
+#nzwrrypuyb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4442,13 +4443,13 @@ Check model
   border-top-width: 0;
 }
 
-#hilehjpvzh .gt_bottom_border {
+#nzwrrypuyb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hilehjpvzh .gt_col_headings {
+#nzwrrypuyb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4463,7 +4464,7 @@ Check model
   border-right-color: #D3D3D3;
 }
 
-#hilehjpvzh .gt_col_heading {
+#nzwrrypuyb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4483,7 +4484,7 @@ Check model
   overflow-x: hidden;
 }
 
-#hilehjpvzh .gt_column_spanner_outer {
+#nzwrrypuyb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4495,15 +4496,15 @@ Check model
   padding-right: 4px;
 }
 
-#hilehjpvzh .gt_column_spanner_outer:first-child {
+#nzwrrypuyb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hilehjpvzh .gt_column_spanner_outer:last-child {
+#nzwrrypuyb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hilehjpvzh .gt_column_spanner {
+#nzwrrypuyb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4515,7 +4516,7 @@ Check model
   width: 100%;
 }
 
-#hilehjpvzh .gt_group_heading {
+#nzwrrypuyb .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4537,7 +4538,7 @@ Check model
   vertical-align: middle;
 }
 
-#hilehjpvzh .gt_empty_group_heading {
+#nzwrrypuyb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4552,15 +4553,15 @@ Check model
   vertical-align: middle;
 }
 
-#hilehjpvzh .gt_from_md > :first-child {
+#nzwrrypuyb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hilehjpvzh .gt_from_md > :last-child {
+#nzwrrypuyb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hilehjpvzh .gt_row {
+#nzwrrypuyb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4579,7 +4580,7 @@ Check model
   overflow-x: hidden;
 }
 
-#hilehjpvzh .gt_stub {
+#nzwrrypuyb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4591,7 +4592,7 @@ Check model
   padding-left: 12px;
 }
 
-#hilehjpvzh .gt_summary_row {
+#nzwrrypuyb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4601,7 +4602,7 @@ Check model
   padding-right: 5px;
 }
 
-#hilehjpvzh .gt_first_summary_row {
+#nzwrrypuyb .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4611,7 +4612,7 @@ Check model
   border-top-color: #D3D3D3;
 }
 
-#hilehjpvzh .gt_grand_summary_row {
+#nzwrrypuyb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4621,7 +4622,7 @@ Check model
   padding-right: 5px;
 }
 
-#hilehjpvzh .gt_first_grand_summary_row {
+#nzwrrypuyb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4631,11 +4632,11 @@ Check model
   border-top-color: #D3D3D3;
 }
 
-#hilehjpvzh .gt_striped {
+#nzwrrypuyb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hilehjpvzh .gt_table_body {
+#nzwrrypuyb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4644,7 +4645,7 @@ Check model
   border-bottom-color: #D3D3D3;
 }
 
-#hilehjpvzh .gt_footnotes {
+#nzwrrypuyb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4658,13 +4659,13 @@ Check model
   border-right-color: #D3D3D3;
 }
 
-#hilehjpvzh .gt_footnote {
+#nzwrrypuyb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#hilehjpvzh .gt_sourcenotes {
+#nzwrrypuyb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4678,46 +4679,46 @@ Check model
   border-right-color: #D3D3D3;
 }
 
-#hilehjpvzh .gt_sourcenote {
+#nzwrrypuyb .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#hilehjpvzh .gt_left {
+#nzwrrypuyb .gt_left {
   text-align: left;
 }
 
-#hilehjpvzh .gt_center {
+#nzwrrypuyb .gt_center {
   text-align: center;
 }
 
-#hilehjpvzh .gt_right {
+#nzwrrypuyb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hilehjpvzh .gt_font_normal {
+#nzwrrypuyb .gt_font_normal {
   font-weight: normal;
 }
 
-#hilehjpvzh .gt_font_bold {
+#nzwrrypuyb .gt_font_bold {
   font-weight: bold;
 }
 
-#hilehjpvzh .gt_font_italic {
+#nzwrrypuyb .gt_font_italic {
   font-style: italic;
 }
 
-#hilehjpvzh .gt_super {
+#nzwrrypuyb .gt_super {
   font-size: 65%;
 }
 
-#hilehjpvzh .gt_footnote_marks {
+#nzwrrypuyb .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="hilehjpvzh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="nzwrrypuyb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -4731,45 +4732,45 @@ Check model
   <tbody class="gt_table_body">
     <tr>
       <td class="gt_row gt_left">male</td>
-      <td class="gt_row gt_left">693</td>
-      <td class="gt_row gt_left">875 (849 to 901)</td>
-      <td class="gt_row gt_left">182 (156 to 208)</td>
-      <td class="gt_row gt_left">0.208 (0.185 to 0.232)</td>
+      <td class="gt_row gt_left">686</td>
+      <td class="gt_row gt_left">874 (848 to 901)</td>
+      <td class="gt_row gt_left">188 (162 to 215)</td>
+      <td class="gt_row gt_left">0.216 (0.192 to 0.239)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">female</td>
-      <td class="gt_row gt_left">382</td>
-      <td class="gt_row gt_left">552 (534 to 570)</td>
-      <td class="gt_row gt_left">170 (152 to 188)</td>
-      <td class="gt_row gt_left">0.308 (0.285 to 0.331)</td>
+      <td class="gt_row gt_left">389</td>
+      <td class="gt_row gt_left">552 (533 to 572)</td>
+      <td class="gt_row gt_left">163 (144 to 183)</td>
+      <td class="gt_row gt_left">0.296 (0.272 to 0.32)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">hc</td>
       <td class="gt_row gt_left">488</td>
       <td class="gt_row gt_left">761 (737 to 785)</td>
       <td class="gt_row gt_left">273 (249 to 297)</td>
-      <td class="gt_row gt_left">0.359 (0.339 to 0.379)</td>
+      <td class="gt_row gt_left">0.359 (0.338 to 0.379)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">qech</td>
       <td class="gt_row gt_left">587</td>
-      <td class="gt_row gt_left">666 (645 to 687)</td>
-      <td class="gt_row gt_left">79 (58 to 100)</td>
-      <td class="gt_row gt_left">0.119 (0.091 to 0.147)</td>
+      <td class="gt_row gt_left">666 (644 to 688)</td>
+      <td class="gt_row gt_left">79 (57 to 101)</td>
+      <td class="gt_row gt_left">0.119 (0.09 to 0.148)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">hivpos</td>
-      <td class="gt_row gt_left">661</td>
-      <td class="gt_row gt_left">820 (795 to 844)</td>
-      <td class="gt_row gt_left">159 (134 to 183)</td>
-      <td class="gt_row gt_left">0.193 (0.17 to 0.217)</td>
+      <td class="gt_row gt_left">660</td>
+      <td class="gt_row gt_left">823 (799 to 847)</td>
+      <td class="gt_row gt_left">163 (139 to 187)</td>
+      <td class="gt_row gt_left">0.198 (0.175 to 0.221)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">hivneg</td>
-      <td class="gt_row gt_left">414</td>
-      <td class="gt_row gt_left">608 (585 to 630)</td>
-      <td class="gt_row gt_left">194 (171 to 216)</td>
-      <td class="gt_row gt_left">0.319 (0.294 to 0.343)</td>
+      <td class="gt_row gt_left">415</td>
+      <td class="gt_row gt_left">604 (582 to 626)</td>
+      <td class="gt_row gt_left">189 (167 to 211)</td>
+      <td class="gt_row gt_left">0.313 (0.288 to 0.338)</td>
     </tr>
   </tbody>
   
@@ -4786,7 +4787,7 @@ Check model
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#sohucjxhvl .gt_table {
+#gkbbvbbpjm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -4811,7 +4812,7 @@ Check model
   border-left-color: #D3D3D3;
 }
 
-#sohucjxhvl .gt_heading {
+#gkbbvbbpjm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4823,7 +4824,7 @@ Check model
   border-right-color: #D3D3D3;
 }
 
-#sohucjxhvl .gt_title {
+#gkbbvbbpjm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4833,7 +4834,7 @@ Check model
   border-bottom-width: 0;
 }
 
-#sohucjxhvl .gt_subtitle {
+#gkbbvbbpjm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4843,13 +4844,13 @@ Check model
   border-top-width: 0;
 }
 
-#sohucjxhvl .gt_bottom_border {
+#gkbbvbbpjm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sohucjxhvl .gt_col_headings {
+#gkbbvbbpjm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4864,7 +4865,7 @@ Check model
   border-right-color: #D3D3D3;
 }
 
-#sohucjxhvl .gt_col_heading {
+#gkbbvbbpjm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4884,7 +4885,7 @@ Check model
   overflow-x: hidden;
 }
 
-#sohucjxhvl .gt_column_spanner_outer {
+#gkbbvbbpjm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4896,15 +4897,15 @@ Check model
   padding-right: 4px;
 }
 
-#sohucjxhvl .gt_column_spanner_outer:first-child {
+#gkbbvbbpjm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sohucjxhvl .gt_column_spanner_outer:last-child {
+#gkbbvbbpjm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sohucjxhvl .gt_column_spanner {
+#gkbbvbbpjm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4916,7 +4917,7 @@ Check model
   width: 100%;
 }
 
-#sohucjxhvl .gt_group_heading {
+#gkbbvbbpjm .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4938,7 +4939,7 @@ Check model
   vertical-align: middle;
 }
 
-#sohucjxhvl .gt_empty_group_heading {
+#gkbbvbbpjm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4953,15 +4954,15 @@ Check model
   vertical-align: middle;
 }
 
-#sohucjxhvl .gt_from_md > :first-child {
+#gkbbvbbpjm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sohucjxhvl .gt_from_md > :last-child {
+#gkbbvbbpjm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sohucjxhvl .gt_row {
+#gkbbvbbpjm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4980,7 +4981,7 @@ Check model
   overflow-x: hidden;
 }
 
-#sohucjxhvl .gt_stub {
+#gkbbvbbpjm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4992,7 +4993,7 @@ Check model
   padding-left: 12px;
 }
 
-#sohucjxhvl .gt_summary_row {
+#gkbbvbbpjm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5002,7 +5003,7 @@ Check model
   padding-right: 5px;
 }
 
-#sohucjxhvl .gt_first_summary_row {
+#gkbbvbbpjm .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5012,7 +5013,7 @@ Check model
   border-top-color: #D3D3D3;
 }
 
-#sohucjxhvl .gt_grand_summary_row {
+#gkbbvbbpjm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5022,7 +5023,7 @@ Check model
   padding-right: 5px;
 }
 
-#sohucjxhvl .gt_first_grand_summary_row {
+#gkbbvbbpjm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5032,11 +5033,11 @@ Check model
   border-top-color: #D3D3D3;
 }
 
-#sohucjxhvl .gt_striped {
+#gkbbvbbpjm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sohucjxhvl .gt_table_body {
+#gkbbvbbpjm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5045,7 +5046,7 @@ Check model
   border-bottom-color: #D3D3D3;
 }
 
-#sohucjxhvl .gt_footnotes {
+#gkbbvbbpjm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5059,13 +5060,13 @@ Check model
   border-right-color: #D3D3D3;
 }
 
-#sohucjxhvl .gt_footnote {
+#gkbbvbbpjm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#sohucjxhvl .gt_sourcenotes {
+#gkbbvbbpjm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5079,46 +5080,46 @@ Check model
   border-right-color: #D3D3D3;
 }
 
-#sohucjxhvl .gt_sourcenote {
+#gkbbvbbpjm .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#sohucjxhvl .gt_left {
+#gkbbvbbpjm .gt_left {
   text-align: left;
 }
 
-#sohucjxhvl .gt_center {
+#gkbbvbbpjm .gt_center {
   text-align: center;
 }
 
-#sohucjxhvl .gt_right {
+#gkbbvbbpjm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sohucjxhvl .gt_font_normal {
+#gkbbvbbpjm .gt_font_normal {
   font-weight: normal;
 }
 
-#sohucjxhvl .gt_font_bold {
+#gkbbvbbpjm .gt_font_bold {
   font-weight: bold;
 }
 
-#sohucjxhvl .gt_font_italic {
+#gkbbvbbpjm .gt_font_italic {
   font-style: italic;
 }
 
-#sohucjxhvl .gt_super {
+#gkbbvbbpjm .gt_super {
   font-size: 65%;
 }
 
-#sohucjxhvl .gt_footnote_marks {
+#gkbbvbbpjm .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="sohucjxhvl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="gkbbvbbpjm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -5131,9 +5132,9 @@ Check model
   <tbody class="gt_table_body">
     <tr>
       <td class="gt_row gt_left">1075</td>
-      <td class="gt_row gt_left">1427 (1395 to 1459)</td>
-      <td class="gt_row gt_left">352 (320 to 384)</td>
-      <td class="gt_row gt_left">0.247 (0.23 to 0.263)</td>
+      <td class="gt_row gt_left">1427 (1394 to 1460)</td>
+      <td class="gt_row gt_left">352 (319 to 385)</td>
+      <td class="gt_row gt_left">0.247 (0.229 to 0.264)</td>
     </tr>
   </tbody>
   
@@ -5180,7 +5181,7 @@ Sensitivity analysis
 <span class='fu'>boot_fx</span><span class='op'>(</span><span class='va'>s1_covidt</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 1075.0000000 1388.8204260  313.8204260    0.2259618</code></pre>
+<pre><code>[1] 1075.0000000 1357.6761402  282.6761402    0.2082059</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>est_s1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/boot/man/boot.html'>boot</a></span><span class='op'>(</span><span class='va'>s1_covidt</span>,<span class='va'>boot_fx</span>,R<span class='op'>=</span><span class='fl'>100</span>,sim<span class='op'>=</span><span class='st'>"parametric"</span><span class='op'>)</span>
 <span class='va'>sd_s1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>est_s1</span><span class='op'>$</span><span class='va'>t</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>est_s1</span><span class='op'>$</span><span class='va'>t</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>est_s1</span><span class='op'>$</span><span class='va'>t</span><span class='op'>[</span>,<span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>est_s1</span><span class='op'>$</span><span class='va'>t</span><span class='op'>[</span>,<span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># boot command output is a vector of estimate for worst / actual / averted</span>
@@ -5191,7 +5192,7 @@ Sensitivity analysis
 <pre><code># A tibble: 1 x 4
   covid_yes covid_no            rel.diff         abs.diff             
   &lt;chr&gt;     &lt;chr&gt;               &lt;chr&gt;            &lt;chr&gt;                
-1 1075      1387 (1337 to 1437) 312 (262 to 362) 0.225 (0.197 to 0.25…</code></pre>
+1 1075      1387 (1335 to 1439) 312 (260 to 364) 0.225 (0.196 to 0.25…</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>table_fx</span><span class='op'>(</span><span class='va'>m1_nb_covidt</span>,<span class='va'>sd_x</span><span class='op'>)</span>
 </code></pre>
@@ -5199,7 +5200,7 @@ Sensitivity analysis
 <pre><code># A tibble: 1 x 4
   covid_yes covid_no            rel.diff         abs.diff             
   &lt;chr&gt;     &lt;chr&gt;               &lt;chr&gt;            &lt;chr&gt;                
-1 1075      1408 (1366 to 1450) 333 (291 to 375) 0.237 (0.214 to 0.25…</code></pre>
+1 1075      1408 (1367 to 1449) 333 (292 to 374) 0.237 (0.215 to 0.25…</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m1_nb</span><span class='op'>$</span><span class='va'>aic</span>
 </code></pre>
