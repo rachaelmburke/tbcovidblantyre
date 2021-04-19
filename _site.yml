@@ -12,6 +12,8 @@ navbar:
   left:
     - text: "Code"
       href: Code.html
+    - text: "Appendix"
+      href: Appendix.html
 output: 
   distill::distill_article:
     css: styles.css

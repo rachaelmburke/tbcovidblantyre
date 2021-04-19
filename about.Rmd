@@ -14,4 +14,4 @@ Some more information about our research group is available at Dr Peter MacPhers
 More data about TB epidemiology in Blantyre is here https://github.com/petermacp/BlantyreTBEpi (a companion package to the paper 'MacPherson, P. et al. Disparities in access to diagnosis and care in Blantyre, Malawi, identified through enhanced tuberculosis surveillance and spatial analysis. BMC Medicine 17, 21 (2019). https://doi.org/10.1186/s12916-019-1260-6'
  )
 
-If you have any questions, we'd be happy to discuss.  A good first port of call is probably peter.macpherson [at] lstmed [dot] ac [dot] uk or rachaelburke [at] lshtm [dot] ac [dot] uk.
+If you have any questions, we'd be very happy to discuss.  A good first port of call is probably peter.macpherson [at] lstmed [dot] ac [dot] uk or rachael.burke [at] lshtm [dot] ac [dot] uk.

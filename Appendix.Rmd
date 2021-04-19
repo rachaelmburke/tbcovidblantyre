@@ -1,0 +1,137 @@
+---
+title: "Appendix"
+description: |
+  Code for our Interrupted Time Series Analysis
+author:
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+## What is the significance of chosen inflection point?
+
+```{r, message=FALSE}
+library(MASS)
+library(here)
+library(tidyverse)
+library(lubridate)
+library(zoo)
+
+tb_data_group <- read_csv(here("data","tb_data_group.csv"))
+
+load(here("data/Pop_Age_Sex_HIV.rdata")) # Blantyre census data disaggregated by age and sex (from world population prospects and modified by CCK)
+cens <- PopQ %>%
+  mutate(year_q=paste0(Year,":",Q)) %>%
+  mutate(yq=yq(year_q)) # yq is a date with 1st day of each quarter
+
+age_levels_10 <- c("0-14","15-24", "25-34", "35-44", "45-54", "55-64", "65+")
+
+
+```{r data_wrangle, warning=F, message=F}
+tb_data <- tb_data_group %>% uncount(n) %>% mutate(month=dmy(month)) %>% mutate(fac=factor(fac),
+                                                                                sex = factor(sex),
+                                                                                hiv = factor(hiv))
+
+cens_10yr <- cens %>% mutate(age_gp=case_when(
+  Age=="[0,4)" ~ "0-14",
+  Age=="[5,9)" ~ "0-14",
+  Age=="[10,14)" ~ "0-14",
+  Age=="[15,19)" ~ "15-24",
+  Age=="[20,24)" ~ "15-24",
+  Age=="[25,29)" ~ "25-34",
+  Age=="[30,34)" ~ "25-34",
+  Age=="[35,39)" ~ "35-44",
+  Age=="[40,44)" ~ "35-44",
+  Age=="[45,49)" ~ "45-54",
+  Age=="[50,54)" ~ "45-54",
+  Age=="[55,59)" ~ "55-64",
+  Age=="[60,64)" ~ "55-64",
+  Age=="[60,64)" ~ "55-64",
+  Age=="[65,69)" ~ "65+",
+  Age=="[70,74)" ~ "65+",
+  Age=="[75, )" ~ "65+"
+)) %>%
+  group_by(yq, age_gp, Sex) %>%
+  summarise(pop=sum(Population))
+
+cens_all <- cens %>%
+  group_by(yq) %>%
+  summarise(pop=sum(Population)) %>%
+  mutate(`0`=pop,  # so this is a slightly hacky way to get population demoninators for each month (the quarter denominator gets repeated the same three times, not ideal, but it doesn't make any difference.  For plotting the graph - where CNR is a continous variable, I interpolate population to avoid zigzags)
+         `1`=pop,
+         `2`=pop) %>%
+  pivot_longer(c(`0`,`1`,`2`),names_to="m") %>%
+  mutate(m=as.numeric(m)) %>%
+  mutate(month=yq+months(m))
+
+# then this is dataframe lumping all cases togehter
+all <- tb_data %>% 
+  group_by(month) %>%
+  summarise(cases=n()) %>% #generates cases per month
+  ungroup() %>%
+  mutate(covid = if_else(month >= covid_date_m, 1L,0L)) %>%
+  arrange(month) %>%
+  mutate(month_num = 1:n()) %>% #create a month_num variable to use in model (rather than actual date, so coefficients make sense)
+  left_join(cens_all) %>%
+  mutate(cnr=(cases/pop)*100000*12) # x12 to get annualised CNRs (NB. children included in both denominator and numerator here)
+
+covid_date_m <- dmy("01 April 2020") # date of COVID starting (whole month)
+covid_month_num <- 47
+```
+
+```{r}
+m <-glm.nb(cases ~ month_num + offset(log(pop)), data=all) # model without specifying COVID time
+res <- residuals(m)
+
+
+res_df <- res %>% as_tibble_col(column_name="res") %>% cbind(all$month_num) %>% rename(month_num=`all$month_num`) 
+res_df <- res_df %>% mutate(movingav=zoo::rollmean(res,k=5, na.pad=T, align="left"))
+
+ggplot(res_df) +
+  geom_point(aes(x=month_num, y=res),shape=1) + 
+  geom_line(aes(x=month_num, y=movingav)) +
+  geom_vline(aes(xintercept=covid_month_num), color="blue") + # add a line at covid_month_num
+  geom_hline(aes(yintercept=0), color="darkgrey") + # add a zero line
+  labs(title="Residuals from model",
+         caption="Blue line = start of COVID \n Grey line = zero reference line \n Black line = rolling sum of residuals for nine months starting at plotted month") +
+  ylab("Residuals") +
+  xlab("Months since June 2016") +
+  theme_bw()
+
+
+```
+
+```{r}
+## last 9 are 'covid'
+ressum <- sum(rev(res)[1:9]) #test statistic: sum of residuals
+
+N <- 1e6 #number of perms: I tried up to 1e6 (bit slow, but stable P)
+permute.vec <- function(X) X[sample(length(X),replace = FALSE)]
+## permute.vec <- function(X) X #for testing
+permute.vec(res) #test
+
+resmat <- matrix(res,nrow=N,ncol=length(res),byrow = TRUE)
+resmat <- apply(resmat,1,permute.vec)
+resmat <- t(resmat) #each row a permutation of resds
+last9 <- length(res) - 1:9 + 1 #indices of last 9 columns
+resmat <- resmat[,last9]       #restrict to last 9 columns
+res.dist <- rowSums(resmat) #distribution of statistic for perms
+length(res.dist)
+
+hist(res.dist)
+summary(res.dist)
+
+mean(res.dist<ressum) #P value~0.004 (what quantile is obs'd test stat?)
+## re-run a few times to ensure accurate as quoted
+
+## now consider other windows of length 9 when a drop may have happened:
+ressums <- list() #window locations 1 to just shy of last 9
+for(i in 1:(1+length(res)-2*9))
+    ressums[[i]] <- sum(res[seq(from=i,length.out = 9)])
+Pvals <- lapply(ressums,function(x) mean(res.dist<x)) #as above: quantile
+Pvals <- unlist(Pvals)
+Pvals
+all(Pvals>0.05) #TRUE - no others are significant
+```
+
+
+
