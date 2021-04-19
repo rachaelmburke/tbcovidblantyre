@@ -17,6 +17,8 @@ library(lubridate)
 library(zoo)
 
 tb_data_group <- read_csv(here("data","tb_data_group.csv"))
+covid_date_m <- dmy("01 April 2020") # date of COVID starting (whole month)
+covid_month_num <- 47
 
 load(here("data/Pop_Age_Sex_HIV.rdata")) # Blantyre census data disaggregated by age and sex (from world population prospects and modified by CCK)
 cens <- PopQ %>%
@@ -25,8 +27,6 @@ cens <- PopQ %>%
 
 age_levels_10 <- c("0-14","15-24", "25-34", "35-44", "45-54", "55-64", "65+")
 
-
-```{r data_wrangle, warning=F, message=F}
 tb_data <- tb_data_group %>% uncount(n) %>% mutate(month=dmy(month)) %>% mutate(fac=factor(fac),
                                                                                 sex = factor(sex),
                                                                                 hiv = factor(hiv))
@@ -74,8 +74,6 @@ all <- tb_data %>%
   left_join(cens_all) %>%
   mutate(cnr=(cases/pop)*100000*12) # x12 to get annualised CNRs (NB. children included in both denominator and numerator here)
 
-covid_date_m <- dmy("01 April 2020") # date of COVID starting (whole month)
-covid_month_num <- 47
 ```
 
 ```{r}

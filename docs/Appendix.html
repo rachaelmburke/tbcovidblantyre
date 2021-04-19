@@ -86,26 +86,32 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>TB COVID Blantyre: About this site</title>
+  <title>TB COVID Blantyre: Appendix</title>
+  
+  <meta property="description" itemprop="description" content="Code for our Interrupted Time Series Analysis"/>
   
   
-  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-04-19"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-04-19"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="TB COVID Blantyre: About this site"/>
+  <meta property="og:title" content="TB COVID Blantyre: Appendix"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Code for our Interrupted Time Series Analysis"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="TB COVID Blantyre"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="TB COVID Blantyre: About this site"/>
+  <meta property="twitter:title" content="TB COVID Blantyre: Appendix"/>
+  <meta property="twitter:description" content="Code for our Interrupted Time Series Analysis"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["About this site"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Appendix"]},{"type":"character","attributes":{},"value":["Code for our Interrupted Time Series Analysis\n"]},{"type":"character","attributes":{},"value":["2021-04-19"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2057,7 +2063,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"About this site","authors":[]}
+{"title":"Appendix","description":"Code for our Interrupted Time Series Analysis","authors":[],"publishedDate":"2021-04-19T00:00:00.000+00:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2081,21 +2087,191 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>About this site</h1>
+<h1>Appendix</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p><p>Code for our Interrupted Time Series Analysis</p></p>
 </div>
 
 
 <div class="d-article">
-<p>This is a website (and github repository) of data and code for our work about impact of COVID on TB notifications in Blantyre Malawi.</p>
-<p>We are the Malawi Liverpool Wellcome Population Health group; a group of reseachers affiliated with Malawi-Liverpool-Wellcome, Liverpool School of Tropical Medicine, London School of Hygiene and Tropical Medicine, College of Medicine at University of Malawi and University of Sheffield.</p>
-<p>The TB electronic reporting system is a partnership between our group and Malawi National TB programme and Blantyre District Health Office.</p>
-<p>Some more information about our research group is available at Dr Peter MacPherson’s group manual here <a href="https://petermacp.github.io/mlw.public.health.group/" class="uri">https://petermacp.github.io/mlw.public.health.group/</a> .</p>
-<p>More data about TB epidemiology in Blantyre is here <a href="https://github.com/petermacp/BlantyreTBEpi" class="uri">https://github.com/petermacp/BlantyreTBEpi</a> (a companion package to the paper ‘MacPherson, P. et al. Disparities in access to diagnosis and care in Blantyre, Malawi, identified through enhanced tuberculosis surveillance and spatial analysis. BMC Medicine 17, 21 (2019). <a href="https://doi.org/10.1186/s12916-019-1260-6" class="uri">https://doi.org/10.1186/s12916-019-1260-6</a>’ )</p>
-<p>If you have any questions, we’d be very happy to discuss. A good first port of call is probably peter.macpherson [at] lstmed [dot] ac [dot] uk or rachael.burke [at] lshtm [dot] ac [dot] uk.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="what-is-the-significance-of-chosen-inflection-point">What is the significance of chosen inflection point?</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.stats.ox.ac.uk/pub/MASS4/'>MASS</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://here.r-lib.org/'>here</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://zoo.R-Forge.R-project.org/'>zoo</a></span><span class='op'>)</span>
+
+<span class='va'>tb_data_group</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"data"</span>,<span class='st'>"tb_data_group.csv"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>covid_date_m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='st'>"01 April 2020"</span><span class='op'>)</span> <span class='co'># date of COVID starting (whole month)</span>
+<span class='va'>covid_month_num</span> <span class='op'>&lt;-</span> <span class='fl'>47</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"data/Pop_Age_Sex_HIV.rdata"</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Blantyre census data disaggregated by age and sex (from world population prospects and modified by CCK)</span>
+<span class='va'>cens</span> <span class='op'>&lt;-</span> <span class='va'>PopQ</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>year_q<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='st'>":"</span>,<span class='va'>Q</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>yq<span class='op'>=</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>yq</a></span><span class='op'>(</span><span class='va'>year_q</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># yq is a date with 1st day of each quarter</span>
+
+<span class='va'>age_levels_10</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"0-14"</span>,<span class='st'>"15-24"</span>, <span class='st'>"25-34"</span>, <span class='st'>"35-44"</span>, <span class='st'>"45-54"</span>, <span class='st'>"55-64"</span>, <span class='st'>"65+"</span><span class='op'>)</span>
+
+<span class='va'>tb_data</span> <span class='op'>&lt;-</span> <span class='va'>tb_data_group</span> <span class='op'>%&gt;%</span> <span class='fu'>uncount</span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span>month<span class='op'>=</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='va'>month</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span>fac<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>fac</span><span class='op'>)</span>,
+                                                                                sex <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span>,
+                                                                                hiv <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>hiv</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>cens_10yr</span> <span class='op'>&lt;-</span> <span class='va'>cens</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span>age_gp<span class='op'>=</span><span class='fu'>case_when</span><span class='op'>(</span>
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[0,4)"</span> <span class='op'>~</span> <span class='st'>"0-14"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[5,9)"</span> <span class='op'>~</span> <span class='st'>"0-14"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[10,14)"</span> <span class='op'>~</span> <span class='st'>"0-14"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[15,19)"</span> <span class='op'>~</span> <span class='st'>"15-24"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[20,24)"</span> <span class='op'>~</span> <span class='st'>"15-24"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[25,29)"</span> <span class='op'>~</span> <span class='st'>"25-34"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[30,34)"</span> <span class='op'>~</span> <span class='st'>"25-34"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[35,39)"</span> <span class='op'>~</span> <span class='st'>"35-44"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[40,44)"</span> <span class='op'>~</span> <span class='st'>"35-44"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[45,49)"</span> <span class='op'>~</span> <span class='st'>"45-54"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[50,54)"</span> <span class='op'>~</span> <span class='st'>"45-54"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[55,59)"</span> <span class='op'>~</span> <span class='st'>"55-64"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[60,64)"</span> <span class='op'>~</span> <span class='st'>"55-64"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[60,64)"</span> <span class='op'>~</span> <span class='st'>"55-64"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[65,69)"</span> <span class='op'>~</span> <span class='st'>"65+"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[70,74)"</span> <span class='op'>~</span> <span class='st'>"65+"</span>,
+  <span class='va'>Age</span><span class='op'>==</span><span class='st'>"[75, )"</span> <span class='op'>~</span> <span class='st'>"65+"</span>
+<span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>yq</span>, <span class='va'>age_gp</span>, <span class='va'>Sex</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>pop<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>Population</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>cens_all</span> <span class='op'>&lt;-</span> <span class='va'>cens</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>yq</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>pop<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>Population</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>`0`<span class='op'>=</span><span class='va'>pop</span>,  <span class='co'># so this is a slightly hacky way to get population demoninators for each month (the quarter denominator gets repeated the same three times, not ideal, but it doesn't make any difference.  For plotting the graph - where CNR is a continous variable, I interpolate population to avoid zigzags)</span>
+         `1`<span class='op'>=</span><span class='va'>pop</span>,
+         `2`<span class='op'>=</span><span class='va'>pop</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>pivot_longer</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>`0`</span>,<span class='va'>`1`</span>,<span class='va'>`2`</span><span class='op'>)</span>,names_to<span class='op'>=</span><span class='st'>"m"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>m<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>month<span class='op'>=</span><span class='va'>yq</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/weekday.POSIXt.html'>months</a></span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># then this is dataframe lumping all cases togehter</span>
+<span class='va'>all</span> <span class='op'>&lt;-</span> <span class='va'>tb_data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>month</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>cases<span class='op'>=</span><span class='fu'>n</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'>#generates cases per month</span>
+  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>covid <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>month</span> <span class='op'>&gt;=</span> <span class='va'>covid_date_m</span>, <span class='fl'>1L</span>,<span class='fl'>0L</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>month</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>month_num <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'>n</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'>#create a month_num variable to use in model (rather than actual date, so coefficients make sense)</span>
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>cens_all</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>cnr<span class='op'>=</span><span class='op'>(</span><span class='va'>cases</span><span class='op'>/</span><span class='va'>pop</span><span class='op'>)</span><span class='op'>*</span><span class='fl'>100000</span><span class='op'>*</span><span class='fl'>12</span><span class='op'>)</span> <span class='co'># x12 to get annualised CNRs (NB. children included in both denominator and numerator here)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m</span> <span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/pkg/MASS/man/glm.nb.html'>glm.nb</a></span><span class='op'>(</span><span class='va'>cases</span> <span class='op'>~</span> <span class='va'>month_num</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/offset.html'>offset</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>pop</span><span class='op'>)</span><span class='op'>)</span>, data<span class='op'>=</span><span class='va'>all</span><span class='op'>)</span> <span class='co'># model without specifying COVID time</span>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
+
+
+<span class='va'>res_df</span> <span class='op'>&lt;-</span> <span class='va'>res</span> <span class='op'>%&gt;%</span> <span class='fu'>as_tibble_col</span><span class='op'>(</span>column_name<span class='op'>=</span><span class='st'>"res"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>all</span><span class='op'>$</span><span class='va'>month_num</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>rename</span><span class='op'>(</span>month_num<span class='op'>=</span><span class='va'>`all$month_num`</span><span class='op'>)</span> 
+<span class='va'>res_df</span> <span class='op'>&lt;-</span> <span class='va'>res_df</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span>movingav<span class='op'>=</span><span class='fu'>zoo</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/zoo/man/rollmean.html'>rollmean</a></span><span class='op'>(</span><span class='va'>res</span>,k<span class='op'>=</span><span class='fl'>5</span>, na.pad<span class='op'>=</span><span class='cn'>T</span>, align<span class='op'>=</span><span class='st'>"left"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>res_df</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>month_num</span>, y<span class='op'>=</span><span class='va'>res</span><span class='op'>)</span>,shape<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>month_num</span>, y<span class='op'>=</span><span class='va'>movingav</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_vline</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>xintercept<span class='op'>=</span><span class='va'>covid_month_num</span><span class='op'>)</span>, color<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># add a line at covid_month_num</span>
+  <span class='fu'>geom_hline</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>yintercept<span class='op'>=</span><span class='fl'>0</span><span class='op'>)</span>, color<span class='op'>=</span><span class='st'>"darkgrey"</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># add a zero line</span>
+  <span class='fu'>labs</span><span class='op'>(</span>title<span class='op'>=</span><span class='st'>"Residuals from model"</span>,
+         caption<span class='op'>=</span><span class='st'>"Blue line = start of COVID \n Grey line = zero reference line \n Black line = rolling sum of residuals for nine months starting at plotted month"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>ylab</span><span class='op'>(</span><span class='st'>"Residuals"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>xlab</span><span class='op'>(</span><span class='st'>"Months since June 2016"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Appendix_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>## last 9 are 'covid'</span>
+<span class='va'>ressum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span><span class='op'>]</span><span class='op'>)</span> <span class='co'>#test statistic: sum of residuals</span>
+
+<span class='va'>N</span> <span class='op'>&lt;-</span> <span class='fl'>1e6</span> <span class='co'>#number of perms: I tried up to 1e6 (bit slow, but stable P)</span>
+<span class='va'>permute.vec</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span> <span class='va'>X</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span>,replace <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>]</span>
+<span class='co'>## permute.vec &lt;- function(X) X #for testing</span>
+<span class='fu'>permute.vec</span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span> <span class='co'>#test</span>
+</code></pre>
+</div>
+<pre><code>          53           44           18           45           30 
+ 0.296485714  2.057099211  0.447358892  0.714035154 -0.659526588 
+          17           36            8           33           32 
+-0.600903283 -0.096255482  0.010083410  1.263587570 -0.868022538 
+          28           43           34           47           25 
+ 1.038083155  0.456478153  0.999874178 -1.768416420  0.683105486 
+           6           13            7           11           38 
+ 0.464648766 -0.350220488 -0.046408481 -1.055558924  1.884665153 
+           4           12           15           49           55 
+-0.717101405  0.027924020  0.756811030 -1.111760550 -0.979214352 
+          19           31            5           22           24 
+-0.884675966 -0.874028706 -0.260904523  0.115737346  1.424002604 
+           2           26           37           46           23 
+-1.617560992  0.658967896  0.617934234  0.845505178 -0.374750290 
+          20           40            1            3           21 
+ 0.602567186 -1.119096154 -0.818146182 -0.187565884 -0.008955361 
+          48           50           42           41           14 
+-2.150209970 -1.408940975 -0.147192969 -2.791492635 -1.112986129 
+          29           27            9           54           51 
+ 0.273721355  1.247464391  0.455950858  0.559682350 -1.579115609 
+          39           35           10           52           16 
+ 1.456342275  0.145075331  0.088058979  0.117361206  1.183886648 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>resmat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='va'>res</span>,nrow<span class='op'>=</span><span class='va'>N</span>,ncol<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span>,byrow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>resmat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span><span class='op'>(</span><span class='va'>resmat</span>,<span class='fl'>1</span>,<span class='va'>permute.vec</span><span class='op'>)</span>
+<span class='va'>resmat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>resmat</span><span class='op'>)</span> <span class='co'>#each row a permutation of resds</span>
+<span class='va'>last9</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span> <span class='op'>+</span> <span class='fl'>1</span> <span class='co'>#indices of last 9 columns</span>
+<span class='va'>resmat</span> <span class='op'>&lt;-</span> <span class='va'>resmat</span><span class='op'>[</span>,<span class='va'>last9</span><span class='op'>]</span>       <span class='co'>#restrict to last 9 columns</span>
+<span class='va'>res.dist</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>resmat</span><span class='op'>)</span> <span class='co'>#distribution of statistic for perms</span>
+<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>res.dist</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 1000000</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>res.dist</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="Appendix_files/figure-html5/unnamed-chunk-3-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>res.dist</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-13.1095  -2.3350  -0.3969  -0.4416   1.4922  10.5439 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>res.dist</span><span class='op'>&lt;</span><span class='va'>ressum</span><span class='op'>)</span> <span class='co'>#P value~0.004 (what quantile is obs'd test stat?)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0.003678</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>## re-run a few times to ensure accurate as quoted</span>
+
+<span class='co'>## now consider other windows of length 9 when a drop may have happened:</span>
+<span class='va'>ressums</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'>#window locations 1 to just shy of last 9</span>
+<span class='kw'>for</span><span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span><span class='op'>-</span><span class='fl'>2</span><span class='op'>*</span><span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='va'>ressums</span><span class='op'>[[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span>from<span class='op'>=</span><span class='va'>i</span>,length.out <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
+<span class='va'>Pvals</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>ressums</span>,<span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>res.dist</span><span class='op'>&lt;</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span> <span class='co'>#as above: quantile</span>
+<span class='va'>Pvals</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>Pvals</span><span class='op'>)</span>
+<span class='va'>Pvals</span>
+</code></pre>
+</div>
+<pre><code> [1] 0.209867 0.310922 0.382698 0.411663 0.462460 0.347372 0.385640
+ [8] 0.556247 0.470577 0.469405 0.338378 0.565622 0.560344 0.625389
+[15] 0.719920 0.795044 0.739842 0.864833 0.919005 0.984102 0.977974
+[22] 0.960608 0.916414 0.884439 0.872608 0.895410 0.856907 0.718173
+[29] 0.665456 0.843859 0.964462 0.956427 0.839226 0.684414 0.612740
+[36] 0.835369 0.898664 0.912789</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='va'>Pvals</span><span class='op'>&gt;</span><span class='fl'>0.05</span><span class='op'>)</span> <span class='co'>#TRUE - no others are significant</span>
+</code></pre>
+</div>
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
